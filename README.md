@@ -8,6 +8,7 @@ github.com/codegangsta/cli
 
 #Features  
 ##加密
+./SimpleRailFenceCipher encode "明文"
 
 ##解密
 ./SimpleRailFenceCipher decode "密文"
