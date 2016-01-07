@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"strconv"
 	"fmt"
 
 	"github.com/codegangsta/cli"
@@ -22,7 +23,22 @@ func main() {
 			Usage:     "栅栏加密操作",
 			Description:	"对明文进行加密操作", 
 			Action: func(c *cli.Context) {
-				println("added task: ", c.Args().First())
+				if len(c.Args())<1 {
+					fmt.Println("请输入需要进行加密操作的明文!")
+					os.Exit(1)	
+				}
+				 
+				rails := 2
+				if c.Args().Get(1) != "" {
+					r,err := strconv.Atoi(c.Args().Get(1))
+					if err != nil {
+						fmt.Println("参数："+c.Args().Get(1)+" 不能转换为整型！")
+						os.Exit(1)
+					}else{
+						rails = r
+					}
+				}
+				fmt.Println(rails)
 			},
 		},
 		{
@@ -54,12 +70,6 @@ func main() {
 			},
 		}}
 	
-	app.Flags = []cli.Flag {
-		cli.StringFlag{
-		Name:        "rails",
-		Value:       "2",
-		Usage:       "加密栅栏数",
-	}}
 	fmt.Printf("\n========%s========\n",app.Name)	
 	app.Run(os.Args)
 }
