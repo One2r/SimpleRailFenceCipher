@@ -21,24 +21,40 @@ func main() {
 		{
 			Name:      "encode",
 			Usage:     "栅栏加密操作",
-			Description:	"对明文进行加密操作", 
+			Description:	"对明文进行加密操作，加密栅栏数默认为2", 
 			Action: func(c *cli.Context) {
 				if len(c.Args())<1 {
 					fmt.Println("请输入需要进行加密操作的明文!")
 					os.Exit(1)	
 				}
-				 
-				rails := 2
+				msg := c.Args().First()
+				fmt.Printf("输入明文为：%s\n",msg)
+				line := 2
 				if c.Args().Get(1) != "" {
-					r,err := strconv.Atoi(c.Args().Get(1))
+					l,err := strconv.Atoi(c.Args().Get(1))
 					if err != nil {
 						fmt.Println("参数："+c.Args().Get(1)+" 不能转换为整型！")
 						os.Exit(1)
 					}else{
-						rails = r
+						line = l
 					}
 				}
-				fmt.Println(rails)
+				fmt.Printf("加密栅栏数为：%d\n",line)
+				remainder := len(msg) % line
+				if remainder > 0{
+					for i:=0;i<line-remainder;i++ {
+						msg +="."
+					}
+					fmt.Printf("均匀分栏不足末尾补.后明文：%s\n",msg)
+				}
+				col :=len(msg)/line
+				cipher:=""
+				for i:=0 ; i<col ; i++ {
+					for j:=0;j<line ; j++ {
+						 cipher +=string(msg[i+j*col])	
+					}
+				}
+				fmt.Printf("\n加密结果：%s\n",cipher)
 			},
 		},
 		{
