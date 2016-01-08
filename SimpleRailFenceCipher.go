@@ -80,7 +80,7 @@ func main() {
 							result += string(str[j*field[i]+k])
 						}
 					}
-					fmt.Printf("%d) %d栏栅栏解密：\n",i+1,field[i])
+					fmt.Printf("%d) %d栏栅栏解密：\n",i+1,line)
 					fmt.Printf("%s\n\n",result)
 				}	
 			},
