@@ -9,7 +9,15 @@ github.com/codegangsta/cli
 #Features  
 ##加密
 ./SimpleRailFenceCipher encode "明文" [栅栏数]  
-加密时在不能均匀分栏的情况下，将会在明文末尾补充“.”。
+加密时在不能均匀分栏的情况下，将会在明文末尾补充“.”。  
+###示例  
+    ./SimpleRailFenceCipher encode "the anwser is wctf{C01umnar},if u is a big new,u can help us think more question,tks." 17
+
+	========Simple Rail Fence Cipher========
+	输入明文为：the anwser is wctf{C01umnar},if u is a big new,u can help us think more question,tks.
+	加密栅栏数为：17
+	
+	加密结果：tn c0afsiwal kes,hwit1r  g,npt  ttessfu}ua u  hmqik e {m,  n huiouosarwCniibecesnren.
 
 ##解密
 ./SimpleRailFenceCipher decode "密文"
