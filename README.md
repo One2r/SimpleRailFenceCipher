@@ -8,7 +8,7 @@ github.com/codegangsta/cli
 
 #Features  
 ##加密
-./SimpleRailFenceCipher encode "明文"   
+./SimpleRailFenceCipher encode "明文" [栅栏数]  
 加密时在不能均匀分栏的情况下，将会在明文末尾补充“.”。
 
 ##解密
